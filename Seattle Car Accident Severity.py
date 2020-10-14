@@ -408,7 +408,7 @@ f1_score(y_test, yhat, average='weighted')
 
 # ### KNN Model
 
-# In[ ]:
+# In[50]:
 
 
 from sklearn.neighbors import KNeighborsClassifier
@@ -436,6 +436,34 @@ plt.xlabel('Number of Nabors (K)')
 plt.tight_layout()
 plt.show()
 print( "The best accuracy was with", mean_acc.max(), "with k=", mean_acc.argmax()+1) 
+
+
+# In[51]:
+
+
+k = 9
+kNN_model = KNeighborsClassifier(n_neighbors=k).fit(X_train,y_train)
+
+
+# In[52]:
+
+
+yhat = kNN_model.predict(X_test)
+yhat[0:5]
+
+
+# In[53]:
+
+
+from sklearn.metrics import jaccard_similarity_score
+jaccard_similarity_score(y_test, yhat)
+
+
+# In[54]:
+
+
+from sklearn.metrics import f1_score
+f1_score(y_test, yhat, average='weighted') 
 
 
 # In[ ]:
